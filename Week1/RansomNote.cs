@@ -1,30 +1,35 @@
-public class Solution
+using System;
+
+namespace Leetcode_May_Challenge.Week1
 {
-    public bool CanConstruct(string ransomNote, string magazine)
+    public class RansomNote
     {
-        var magazineDict = new Dictionary<char, long>();
-        foreach (char c in magazine)
+        public bool CanConstruct(string ransomNote, string magazine)
         {
-            if (magazineDict.ContainsKey(c))
-                magazineDict[c] += 1;
-            else
-                magazineDict.Add(c, 1);
+            var magazineDict = new Dictionary<char, long>();
+            foreach (char c in magazine)
+            {
+                if (magazineDict.ContainsKey(c))
+                    magazineDict[c] += 1;
+                else
+                    magazineDict.Add(c, 1);
+            }
+            foreach (char c in ransomNote)
+            {
+                if (!magazineDict.ContainsKey(c))
+                {
+                    return false;
+                }
+                else if (magazineDict[c] == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    magazineDict[c] -= 1;
+                }
+            }
+            return true;
         }
-        foreach (char c in ransomNote)
-        {
-            if (!magazineDict.ContainsKey(c))
-            {
-                return false;
-            }
-            else if (magazineDict[c] == 0)
-            {
-                return false;
-            }
-            else
-            {
-                magazineDict[c] -= 1;
-            }
-        }
-        return true;
     }
 }
