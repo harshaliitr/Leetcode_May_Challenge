@@ -8,7 +8,7 @@ namespace Leetcode_May_Challenge
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.WriteLine(FirstUniqueCharacter.FirstUniqChar("loveleetcode"));
+            Console.WriteLine(MajorityElement.FindMajorityElement(new int[] { 2147483647 }));
         }
     }
 }
